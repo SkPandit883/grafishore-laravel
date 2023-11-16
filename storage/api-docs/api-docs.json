@@ -1,0 +1,71 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Car Informations",
+        "contact": {
+            "email": "skpandit659@gmail.com"
+        },
+        "version": "1.0.0",
+        "x-logo": {
+            "url": "https://via.placeholder.com/190x90.png?text=CarInformations"
+        }
+    },
+    "paths": {
+        "/api/car": {
+            "get": {
+                "tags": [
+                    "Car"
+                ],
+                "summary": "Get All cars",
+                "operationId": "all",
+                "responses": {
+                    "200": {
+                        "description": "Operation Successful"
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/api/car/{id}": {
+            "get": {
+                "tags": [
+                    "Car"
+                ],
+                "summary": "Get a car by ID",
+                "operationId": "findCarById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the car to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation Successful"
+                    },
+                    "404": {
+                        "description": "Car not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Car"
+        }
+    ]
+}

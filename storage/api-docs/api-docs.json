@@ -18,12 +18,20 @@
                 ],
                 "summary": "Get All cars",
                 "operationId": "all",
+                "parameters": [
+                    {
+                        "name": "X-API-KEY",
+                        "in": "header",
+                        "description": "Your API Key",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Operation Successful"
                     },
-                    "400": {
-                        "description": "Invalid status value"
+                    "403": {
+                        "description": "Invalid API key"
                     }
                 }
             }
@@ -45,21 +53,25 @@
                             "type": "integer",
                             "format": "int64"
                         }
+                    },
+                    {
+                        "name": "X-API-KEY",
+                        "in": "header",
+                        "description": "Your API Key",
+                        "required": true
                     }
                 ],
                 "responses": {
+                    "403": {
+                        "description": "Invalid API key"
+                    },
                     "200": {
                         "description": "Operation Successful"
                     },
                     "404": {
-                        "description": "Car not found"
+                        "description": "Resource not found for id: {id}"
                     }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
+                }
             }
         }
     },

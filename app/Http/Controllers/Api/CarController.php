@@ -26,10 +26,16 @@ class CarController extends Controller
      *         description="Operation Successful",
      *
      *     ),
-     *     @OA\Response(
-     *         response=400,
-     *         description="Invalid status value"
+     *      @OA\Response(
+     *         response=403,
+     *         description="Invalid API key"
      *     ),
+     *      @OA\Parameter(
+     *         name="X-API-KEY",
+     *         in="header",
+     *         description="Your API Key",
+     *         required=true,
+     *      )
      *
      * )
      */
@@ -62,12 +68,22 @@ class CarController extends Controller
      *         )
      *     ),
      *     @OA\Response(
+     *         response=403,
+     *         description="Invalid API key"
+     *     ),
+     *      @OA\Parameter(
+     *         name="X-API-KEY",
+     *         in="header",
+     *         description="Your API Key",
+     *         required=true,
+     *      ),
+     *     @OA\Response(
      *         response=200,
      *         description="Operation Successful"
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Car not found"
+     *         description="Resource not found for id: {id}"
      *     ),
      * )
      * @OA\Tag(name="Car")
@@ -78,7 +94,7 @@ class CarController extends Controller
         try {
             return Response::success($this->carRepository->findById($id));
         } catch (\Throwable $th) {
-            return Response::error($th->getMessage());
+            return Response::error("Resource not found for id: $id", error_code: 404);
         }
 
     }

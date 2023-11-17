@@ -19,7 +19,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::prefix('car')->group(function () {
-    Route::get('/', [CarController::class, 'all']);
-    Route::get('{id}', [CarController::class, 'find']);
+Route::middleware('verify-api-key')->group(function () {
+    Route::prefix('car')->group(function () {
+        Route::get('/', [CarController::class, 'all']);
+        Route::get('{id}', [CarController::class, 'find']);
+    });
+
 });

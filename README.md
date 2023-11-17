@@ -37,3 +37,5 @@ copy the key from the above table.
 ```
 ### 9. Now you can access the swagger api documentation
 **http://127.0.0.1:8000/api/documentation**
+
+### for any difficulty in project setup ,email me [ skpandit659@gmail.com]

@@ -77,10 +77,7 @@ class CarController extends Controller
      *         description="Your API Key",
      *         required=true,
      *      ),
-     *     @OA\Response(
-     *         response=200,
-     *         description="Operation Successful"
-     *     ),
+     *    
      *     @OA\Response(
      *         response=404,
      *         description="Resource not found for id: {id}"

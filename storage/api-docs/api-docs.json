@@ -65,9 +65,6 @@
                     "403": {
                         "description": "Invalid API key"
                     },
-                    "200": {
-                        "description": "Operation Successful"
-                    },
                     "404": {
                         "description": "Resource not found for id: {id}"
                     }
